@@ -1,0 +1,25 @@
+class BinaryTree:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+
+def branchSums(root):
+	sumList = []  
+	currentSum = 0
+	branchSumHelp(root, sumList, currentSum)
+	return sumList
+
+def branchSumHelp(root, sumList, currentSum):
+	if root is None:
+		return
+	currentSum += root.value
+	
+	if root.left is None and root.right is None:
+		sumList.append(currentSum)
+		return
+	
+	branchSumHelp(root.left,  sumList, currentSum)
+	branchSumHelp(root.right, sumList, currentSum)
+	return
